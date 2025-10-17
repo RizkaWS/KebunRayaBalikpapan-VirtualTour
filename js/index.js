@@ -6,7 +6,7 @@ const LANDING_DATA = [
         "title": "Track Embung",
         "description": "Rasakan ketenangan area Embung, di mana air yang tenang memantulkan hijaunya pepohonan di jantung Kebun Raya Balikpapan.",
         "preview": {
-            "image": "tiles/embung/0-step-1/preview.jpg",
+            "image": "tour/embung/tiles/0-step-1/preview.jpg",
             "offset": 42
         },
         "stats": {
@@ -53,7 +53,7 @@ function constructTourOptions() {
             <div class="info">
                 <h3>${trackData.title}</h3>
                 <p>${trackData.description}</p>
-                <a href="track-${trackData.name}.html" class="start-btn">Start Tour</a>
+                <a href="tour/${trackData.name}/index.html" class="start-btn">Start Tour</a>
             </div>
         </div>`;
 
