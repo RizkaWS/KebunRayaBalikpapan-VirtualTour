@@ -19,7 +19,7 @@ const LANDING_DATA = [
         "title": "Track Hutan Paping",
         "description": "Menelusuri hutan tropis yang rimbun dengan pepohonan tinggi, flora unik, dan suara alam yang menenangkan di setiap langkah.",
         "preview": {
-            "image": "tiles/embung/0-step-1/preview.jpg",
+            "image": "tour/paping/tiles/0-step-1/preview.jpg",
             "offset": 42
         },
         "stats": {
