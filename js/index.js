@@ -32,7 +32,7 @@ const LANDING_DATA = [
         "title": "Track Orchidarium",
         "description": "Masuki dunia anggrek yang menakjubkan — jelajahi beragam spesies anggrek eksotis yang menjadi kebanggaan Kebun Raya.",
         "preview": {
-            "image": "tiles/embung/0-step-1/preview.jpg",
+            "image": "tour/orchidarium/tiles/0-step-1/preview.jpg",
             "offset": 42
         },
         "stats": {
