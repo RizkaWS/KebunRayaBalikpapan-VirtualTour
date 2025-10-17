@@ -2136,9 +2136,22 @@ var APP_DATA = {
           "pitch": 0.13324833799898173,
           "rotation": 0,
           "target": "47-step-48"
+        },
+        {
+          "yaw": 0.2514591587067502,
+          "pitch": 0.33592782247222,
+          "rotation": 0,
+          "target": "0-step-1"
         }
       ],
-      "infoHotspots": []
+      "infoHotspots": [
+        {
+          "yaw": 0.2174591587067502,
+          "pitch": 0.19592782247222,
+          "title": "Titik akhir track.<br>Kembali ke titik awal.",
+          "text": ""
+        }
+      ]
     }
   ],
   "name": "Track Embung 1",

@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Track Embung 1</title>
+    <title>Tur Virtual Kebun Raya Balikpapan</title>
     <meta charset="utf-8">
     <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui" />
     <style>
@@ -15,45 +15,29 @@
     <link href="img/logo.png" rel="icon">
 </head>
 
-<body class="multiple-scenes view-control-buttons">
+<body class="multiple-scenes with-navbar">
+    <nav class="track-navbar">
+        <div class="navbar-left">
+            <a href="javascript:history.back()" class="navbar-back-btn">
+                <img src="img/left.png" />
+            </a>
+        </div>
+        <div class="navbar-center">
+            <h1 class="navbar-title" id="sceneName"></h1>
+        </div>
+        <div class="navbar-right">
+            <a href="javascript:void(0)" class="navbar-back-btn" id="to-first">
+                AWAL
+            </a>
+        </div>
+        <div class="navbar-right">
+            <a href="javascript:void(0)" class="navbar-back-btn" id="to-last">
+                AKHIR
+            </a>
+        </div>
+    </nav>
+
     <div id="pano"></div>
-
-    <div id="titleBar">
-        <h1 class="sceneName" id="sceneName"></h1>
-    </div>
-
-    <a href="javascript:void(0)" id="autorotateToggle">
-        <img class="icon off" src="img/play.png">
-        <img class="icon on" src="img/pause.png">
-    </a>
-
-    <a href="javascript:void(0)" id="fullscreenToggle">
-        <img class="icon off" src="img/fullscreen.png">
-        <img class="icon on" src="img/windowed.png">
-    </a>
-
-    <a href="javascript:history.back()" id="sceneListToggle">
-        <img class="icon off" src="img/left.png">
-    </a>
-
-    <a href="javascript:void(0)" id="viewUp" class="viewControlButton viewControlButton-1">
-        <img class="icon" src="img/up.png">
-    </a>
-    <a href="javascript:void(0)" id="viewDown" class="viewControlButton viewControlButton-2">
-        <img class="icon" src="img/down.png">
-    </a>
-    <a href="javascript:void(0)" id="viewLeft" class="viewControlButton viewControlButton-3">
-        <img class="icon" src="img/left.png">
-    </a>
-    <a href="javascript:void(0)" id="viewRight" class="viewControlButton viewControlButton-4">
-        <img class="icon" src="img/right.png">
-    </a>
-    <a href="javascript:void(0)" id="viewIn" class="viewControlButton viewControlButton-5">
-        <img class="icon" src="img/plus.png">
-    </a>
-    <a href="javascript:void(0)" id="viewOut" class="viewControlButton viewControlButton-6">
-        <img class="icon" src="img/minus.png">
-    </a>
 
     <script src="js/screenfull.min.js"></script>
     <script src="js/bowser.min.js"></script>
@@ -69,7 +53,7 @@
         const trackData = LANDING_DATA.find(data => data.name === trackId);
         const sceneName = document.getElementById("sceneName");
         sceneName.textContent = trackData.title;
-        document.title = trackData.title;
+        document.title = `${trackData.title} - Tur Virtual Kebun Raya Balikpapan` ;
     </script>
 
     <script src="js/tour.js"></script>

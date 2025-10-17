@@ -23,8 +23,8 @@
 
     // Grab elements from DOM.
     var panoElement = document.querySelector("#pano");
-    var autorotateToggleElement = document.querySelector("#autorotateToggle");
-    var fullscreenToggleElement = document.querySelector("#fullscreenToggle");
+    var toFirst = document.getElementById("to-first");
+    var toLast = document.getElementById("to-last");
 
     // Detect desktop or mobile mode.
     if (window.matchMedia) {
@@ -68,9 +68,9 @@
 
     // Create scenes.
     var scenes = data.scenes.map(function (data) {
-        var urlPrefix = "/tour/" + trackId + "/tiles";
-        var source = Marzipano.ImageUrlSource.fromString(urlPrefix + "/" + data.id + "/{z}/{f}/{y}/{x}.jpg", {
-            cubeMapPreviewUrl: urlPrefix + "/" + data.id + "/preview.jpg",
+        var urlPrefix = `/tour/${trackId}/tiles`;
+        var source = Marzipano.ImageUrlSource.fromString(`${urlPrefix}/${data.id}/{z}/{f}/{y}/{x}.jpg`, {
+            cubeMapPreviewUrl: `${urlPrefix}/${data.id}/preview.jpg`,
         });
         var geometry = new Marzipano.CubeGeometry(data.levels);
 
@@ -107,19 +107,6 @@
         };
     });
 
-    // Set up autorotate, if enabled.
-    var autorotate = Marzipano.autorotate({
-        yawSpeed: 0.03,
-        targetPitch: 0,
-        targetFov: Math.PI / 2,
-    });
-    if (data.settings.autorotateEnabled) {
-        autorotateToggleElement.classList.add("enabled");
-    }
-
-    // Set handler for autorotate toggle.
-    autorotateToggleElement.addEventListener("click", toggleAutorotate);
-
     // Set up fullscreen mode, if supported.
     if (screenfull.enabled && data.settings.fullscreenButton) {
         document.body.classList.add("fullscreen-enabled");
@@ -137,98 +124,9 @@
         document.body.classList.add("fullscreen-disabled");
     }
 
-    // DOM elements for view controls.
-    var viewUpElement = document.querySelector("#viewUp");
-    var viewDownElement = document.querySelector("#viewDown");
-    var viewLeftElement = document.querySelector("#viewLeft");
-    var viewRightElement = document.querySelector("#viewRight");
-    var viewInElement = document.querySelector("#viewIn");
-    var viewOutElement = document.querySelector("#viewOut");
-
-    // Dynamic parameters for controls.
-    var velocity = 0.7;
-    var friction = 3;
-
-    // Associate view controls with elements.
-    var controls = viewer.controls();
-    controls.registerMethod(
-        "upElement",
-        new Marzipano.ElementPressControlMethod(viewUpElement, "y", -velocity, friction),
-        true
-    );
-    controls.registerMethod(
-        "downElement",
-        new Marzipano.ElementPressControlMethod(viewDownElement, "y", velocity, friction),
-        true
-    );
-    controls.registerMethod(
-        "leftElement",
-        new Marzipano.ElementPressControlMethod(viewLeftElement, "x", -velocity, friction),
-        true
-    );
-    controls.registerMethod(
-        "rightElement",
-        new Marzipano.ElementPressControlMethod(viewRightElement, "x", velocity, friction),
-        true
-    );
-    controls.registerMethod(
-        "inElement",
-        new Marzipano.ElementPressControlMethod(viewInElement, "zoom", -velocity, friction),
-        true
-    );
-    controls.registerMethod(
-        "outElement",
-        new Marzipano.ElementPressControlMethod(viewOutElement, "zoom", velocity, friction),
-        true
-    );
-
-    function sanitize(s) {
-        return s.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;");
-    }
-
     function switchScene(scene) {
-        stopAutorotate();
         scene.view.setParameters(scene.data.initialViewParameters);
         scene.scene.switchTo();
-        startAutorotate();
-    }
-
-    function showSceneList() {
-        sceneListElement.classList.add("enabled");
-        sceneListToggleElement.classList.add("enabled");
-    }
-
-    function hideSceneList() {
-        sceneListElement.classList.remove("enabled");
-        sceneListToggleElement.classList.remove("enabled");
-    }
-
-    function toggleSceneList() {
-        sceneListElement.classList.toggle("enabled");
-        sceneListToggleElement.classList.toggle("enabled");
-    }
-
-    function startAutorotate() {
-        if (!autorotateToggleElement.classList.contains("enabled")) {
-            return;
-        }
-        viewer.startMovement(autorotate);
-        viewer.setIdleMovement(3000, autorotate);
-    }
-
-    function stopAutorotate() {
-        viewer.stopMovement();
-        viewer.setIdleMovement(Infinity);
-    }
-
-    function toggleAutorotate() {
-        if (autorotateToggleElement.classList.contains("enabled")) {
-            autorotateToggleElement.classList.remove("enabled");
-            stopAutorotate();
-        } else {
-            autorotateToggleElement.classList.add("enabled");
-            startAutorotate();
-        }
     }
 
     function createLinkHotspotElement(hotspot) {
@@ -246,7 +144,7 @@
         var transformProperties = ["-ms-transform", "-webkit-transform", "transform"];
         for (var i = 0; i < transformProperties.length; i++) {
             var property = transformProperties[i];
-            icon.style[property] = "rotate(" + hotspot.rotation + "rad)";
+            icon.style[property] = `rotate(${hotspot.rotation}rad)`;
         }
 
         // Add click event handler.
@@ -365,4 +263,11 @@
 
     // Display the initial scene.
     switchScene(scenes[0]);
+
+    toFirst.addEventListener("click", function() {
+        switchScene(scenes[0]);
+    });
+    toLast.addEventListener("click", function() {
+        switchScene(scenes[scenes.length - 1]);
+    });
 })();

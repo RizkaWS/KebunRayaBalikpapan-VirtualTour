@@ -23,7 +23,7 @@ body {
     padding: 0;
     margin: 0;
     overflow: hidden;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: "DynaPuff", sans-serif;
     font-size: 16px;
     background-color: #000;
     color: #fff;
@@ -788,4 +788,191 @@ body.view-control-buttons .viewControlButton {
 }
 .viewControlButton-6 {
     margin-left: 105px;
+}
+
+/* ========================================
+   360 Page Navbar Styles
+   ======================================== */
+
+/* Navbar container */
+.track-navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 55px;
+    background: #2e7d3277;
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1rem;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+    font-family: 'DynaPuff', cursive;
+}
+
+/* Left section - Back button */
+.navbar-left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.navbar-back-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 0.5rem 1.2rem;
+    border-radius: 0.75rem;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.navbar-back-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: translateX(-3px);
+}
+
+.navbar-back-btn img {
+    width: 20px;
+    height: 20px;
+}
+
+/* Center section - Track title */
+.navbar-center {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar-title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+/* Right section - Actions */
+.navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 0.25rem;
+}
+
+.navbar-info-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 221, 68, 0.9);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: #1D3DA0;
+    font-weight: 700;
+    font-size: 1.2rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.navbar-info-btn:hover {
+    background: rgba(255, 221, 68, 1);
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Adjust existing titleBar to not overlap with navbar */
+#titleBar {
+    top: 80px !important;
+    height: auto !important;
+    background: transparent !important;
+}
+
+/* Adjust pano container to account for navbar */
+body.with-navbar #pano {
+    
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .track-navbar {
+        height: 60px;
+        padding: 0 1rem;
+    }
+    
+    .navbar-title {
+        font-size: 1.2rem;
+    }
+    
+    .navbar-back-btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
+    
+    .navbar-back-btn span {
+        display: none; /* Hide "Back" text on mobile */
+    }
+    
+    .navbar-info-btn {
+        width: 36px;
+        height: 36px;
+        font-size: 1rem;
+    }
+    
+    body.with-navbar #pano {
+        top: 60px;
+        height: calc(100% - 60px);
+    }
+    
+    #titleBar {
+        top: 70px !important;
+    }
+}
+
+/* Very small mobile */
+@media (max-width: 480px) {
+    .track-navbar {
+        height: 55px;
+        padding: 0 0.75rem;
+    }
+    
+    .navbar-title {
+        font-size: 1rem;
+    }
+    
+    .navbar-back-btn {
+        padding: 0.4rem 0.8rem;
+    }
+    
+    body.with-navbar #pano {
+        top: 55px;
+        height: calc(100% - 55px);
+    }
+}
+
+/* Navbar animation */
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.track-navbar {
+    animation: slideDown 0.4s ease-out;
 }

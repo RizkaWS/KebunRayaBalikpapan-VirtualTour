@@ -2682,10 +2682,10 @@ var APP_DATA = {
       ],
       "infoHotspots": [
         {
-          "yaw": 0.9567396498520182,
-          "pitch": 0.19060285639254104,
-          "title": "Back to Start",
-          "text": "Kembali ke tempat awal track hutan paping"
+          "yaw": 0.91467396498520182,
+          "pitch": 0.06060285639254104,
+          "title": "Titik akhir track.<br>Kembali ke titik awal.",
+          "text": ""
         }
       ]
     }

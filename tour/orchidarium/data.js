@@ -3860,7 +3860,7 @@ var APP_DATA = {
         {
           "yaw": 2.3315880371115583,
           "pitch": 0.460665132624543,
-          "rotation": 3.141592653589793,
+          "rotation": 0,
           "target": "0-step-1"
         },
         {
@@ -3872,10 +3872,10 @@ var APP_DATA = {
       ],
       "infoHotspots": [
         {
-          "yaw": 2.3389213496121375,
-          "pitch": 0.30600660415172243,
-          "title": "Akhir track orchid kembali ke titik awal",
-          "text": "Text"
+          "yaw": 2.2959213496121375,
+          "pitch": 0.31600660415172243,
+          "title": "Titik akhir track.<br>Kembali ke titik awal.",
+          "text": ""
         }
       ]
     }
